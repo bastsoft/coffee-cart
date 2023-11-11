@@ -1,10 +1,27 @@
 export default {
+  "playwrite example": async ({page}) => {
+    await page.locator('[data-test="Espresso"]').click();
+    await page.locator('[data-test="Espresso_Macchiato"]').click();
+    await page.locator('[data-test="Cappuccino"]').click();
+    await page.getByRole('button', { name: 'Yes, of course!' }).click();
+    await page.getByLabel('Cart page').click();
+    await page.locator('[data-test="checkout"]').click();
+    await page.getByLabel('Name').fill('Петр');
+    await page.getByLabel('Email').fill('petrilaptev@gmail.com');
+    await page.getByLabel('Promotion message').click();
+    await page.getByLabel('need to deliver message').click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.getByTestId('date').fill('2023-11-11');
+    await page.getByTestId('time').selectOption('10:00 - 14:00');
+    await page.getByTestId('address').fill('Челябинск');
+    await page.getByTestId('typePayCard').check();
+  },
   "userflow чекаут"({cy}){
     this["шаг добавление товара"]({cy});
     cy.get("li:nth-of-type(2) > a").click();
     cy.get("[data-test='checkout']").click();
     this["шаг заполнение формы"]({cy});
-    cy.get("#submit-payment").click();
+    cy.get("button[type='submit']").click();
   },
   "шаг добавление товара"({cy}){
     cy.get("[data-test='Espresso']").click();
@@ -17,7 +34,6 @@ export default {
     cy.get("[data-test='Americano']").click();
   },
   "шаг заполнение формы"({cy}){
-    cy.get("#name").type("П");
     cy.get("#name").type("Петр");
     cy.get("#email").type("petrilaptev@gamil.com");
     cy.get("#promotion").click();

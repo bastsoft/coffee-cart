@@ -3,3 +3,7 @@ node_modules
 dist
 dist-ssr
 *.local
+node_modules/
+/test-results/
+/playwright-report/
+/playwright/.cache/
