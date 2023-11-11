@@ -1,4 +1,4 @@
-import { _ as __vitePreload } from "./index-0858e872.js";
+import { _ as __vitePreload } from "./index-84307f9c.js";
 const getRandomArbitrary = (min, max) => parseInt(Math.random() * (max - min) + min, 10);
 const generateRandomRGBColor = () => `rgb(${getRandomArbitrary(0, 255)}, ${getRandomArbitrary(0, 255)}, ${getRandomArbitrary(0, 255)}, 0.002)`;
 async function makeItSlow() {
@@ -22,4 +22,4 @@ async function makeItSlow() {
 export {
   makeItSlow
 };
-//# sourceMappingURL=slow-6501e706.js.map
+//# sourceMappingURL=slow-b6464704.js.map

@@ -1,4 +1,4 @@
-import { _ as __vitePreload } from "./index-0858e872.js";
+import { _ as __vitePreload } from "./index-84307f9c.js";
 function importGistId(fetchjsonp2, document2, gistId) {
   return fetchjsonp2("https://gist.github.com/" + gistId + ".json").then((data) => {
     var files = {};
@@ -566,4 +566,4 @@ const index = {
 export {
   index as default
 };
-//# sourceMappingURL=index-65ba86eb.js.map
+//# sourceMappingURL=index-640e4fae.js.map

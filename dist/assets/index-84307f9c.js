@@ -7943,6 +7943,12 @@ function createWebHistory(base) {
   });
   return routerHistory;
 }
+function createWebHashHistory(base) {
+  base = location.host ? base || location.pathname + location.search : "";
+  if (!base.includes("#"))
+    base += "#";
+  return createWebHistory(base);
+}
 function isRouteLocation(route) {
   return typeof route === "string" || route && typeof route === "object";
 }
@@ -9399,7 +9405,7 @@ function slowProcessing(results) {
   return results;
 }
 async function slow() {
-  const longTask = await __vitePreload(() => import("./slow-6501e706.js"), true ? [] : void 0);
+  const longTask = await __vitePreload(() => import("./slow-b6464704.js"), true ? [] : void 0);
   performance.mark("slow_process_start");
   longTask.makeItSlow();
   performance.mark("slow_process_end");
@@ -9711,7 +9717,7 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
       this.$snackbar.showMessage({ content: "Thanks for your purchase. Please check your email for payment.", color: "success" });
     },
     async slow() {
-      const longTask = await __vitePreload(() => import("./slow-6501e706.js"), true ? [] : void 0);
+      const longTask = await __vitePreload(() => import("./slow-b6464704.js"), true ? [] : void 0);
       performance.mark("submit-start");
       longTask.makeItSlow();
       performance.mark("submit-end");
@@ -10335,7 +10341,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
 }
 const GitHubPage = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-09b4348a"]]);
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes: [
     {
       path: "/",
@@ -10500,7 +10506,7 @@ const snackbarPlugin = {
     };
   }
 };
-__vitePreload(() => import("./index-65ba86eb.js"), true ? [] : void 0).then(({ default: mySnipt }) => {
+__vitePreload(() => import("./index-640e4fae.js"), true ? [] : void 0).then(({ default: mySnipt }) => {
   mySnipt.loadByLongPress({
     file: __vitePreload(() => import("./snippets-6752ec76.js"), true ? [] : void 0),
     env: { TOKEN: "970030463657472880e8bab3f3ac8e38" },
@@ -10511,4 +10517,4 @@ createApp(App).use(router).use(store).use(snackbarPlugin, { store }).mount("#app
 export {
   __vitePreload as _
 };
-//# sourceMappingURL=index-0858e872.js.map
+//# sourceMappingURL=index-84307f9c.js.map
