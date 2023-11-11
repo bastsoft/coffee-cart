@@ -1,0 +1,12 @@
+{
+  "moduleFileExtensions": ["js", "json", "vue"],
+  "moduleNameMapper": { 
+    "\\.(css|less|scss)$": "<rootDir>/jest.mock.js",
+    "@\/(.*)$": "<rootDir>/src/$1"
+  }, 
+  "transformIgnorePatterns": ["/node_modules/(?!my-snip/.*)"],
+  "transform": {
+    "^.+\\.js$": "babel-jest",
+    "^.+\\.vue$": "vue-jest"
+  }
+}
