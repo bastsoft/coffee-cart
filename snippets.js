@@ -22,6 +22,12 @@ export default {
     cy.get("#email").type("petrilaptev@gamil.com");
     cy.get("#promotion").click();
   },
+  "шаг заполнения доставки"({cy}){
+    cy.get("[data-testid='date']").type("2023-11-11");
+    cy.get("[data-testid='time']").select("10:00 - 14:00");
+    cy.get("[data-testid='address']").type("aaa");
+    cy.get("[data-testid='typePayCard']").click();
+  },
   seo:{
       "Подсветка h1-h6 / strong / b / em"(){
         (function(){var style=document.getElementById('bstrongemhighlight');if(style){style.remove();}else{var bStngEm=document.createElement('style');bStngEm.setAttribute('type','text/css');bStngEm.setAttribute('id','bstrongemhighlight');bStngEm.innerHTML='strong:before {content: \u0022stng - \u0022 !important;} b:before {content: \u0022b - \u0022 !important;} em:before {content: \u0022em - \u0022 !important;} strong {background-color: #690 !important; border: solid !important; padding: 2px !important; color: black !important;} b {background-color: #77D7FF !important; border: solid !important; padding: 2px !important; color: black !important;} em {background-color: #b798f5 !important; border: solid !important; padding: 2px !important; color: black !important;} h1:before {content: \u0022H1 - \u0022 !important;} h2:before {content: \u0022H2 - \u0022 !important;} h3:before {content: \u0022H3 - \u0022 !important;} h4:before {content: \u0022H4 - \u0022 !important;} h5:before {content: \u0022H5 - \u0022 !important;} h6:before {content: \u0022H6 - \u0022 !important;} h1 {background-color: pink !important; border: solid !important; padding: 2px !important; color: black !important;} h2 {background-color: orange !important; border: solid !important; padding: 2px !important; color: black !important;} h3 {background-color: yellow !important; border: solid !important; padding: 2px !important; color: black !important;} h4 {background-color: aquamarine !important; border: solid !important; padding: 2px !important; color: black !important;} h5 {background-color: lightskyblue !important; border: solid !important; padding: 2px !important; color: black !important;} h6 {background-color: plum !important; border: solid !important; padding: 2px !important; color: black !important;}';document.getElementsByTagName('body')[0].appendChild(bStngEm);}})();void(0);

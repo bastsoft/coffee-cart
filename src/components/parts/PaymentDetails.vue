@@ -6,49 +6,43 @@
         <h1>Payment details</h1>
         <button class="close" @click="closeModal()">&times;</button>
       </section>
-      <p>We will send you a payment link via email.</p>
-      <form @submit.prevent="submit" aria-label="Payment form">
-        <div>
-          <label for="name">Name</label>
-          <input ref="name" type="text" name="name" id="name" v-model="name" autocomplete="off" required>
-        </div>
-        <div>
-          <label for="email">Email</label>
-          <input type="email" name="email" id="email" v-model="email" autocomplete="off" required>
-        </div>
-        <div aria-label="Promotion agreement">
-          <input type="checkbox" name="promotion" v-model="subscribe" id="promotion" aria-label="Promotion checkbox">
-          <label id="promotion-label" for="promotion" aria-label="Promotion message">I would like to receive order updates and promotional messages.</label>
-        </div>
-        <div>
-          <button id="submit-payment" type="submit">Submit</button>
-        </div>
-      </form>
+      <FormCheckout
+        v-model="formModel"
+        @submitForm="submit"
+      />
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import FormCheckout from "../form-checkout/form-checkout.vue";
 
 export default defineComponent({
   name: 'PaymentDetails',
+  components:{FormCheckout},
   props: ['isShow'],
   emits: ['close'],
   data() {
     return {
-      name: '',
-      email: '',
-      subscribe: false
+      formModel:{
+        name: '',
+        email: '',
+        subscribe: false,
+
+        day: null,
+        time: null,
+        address: null,
+        typePay: null,
+
+        step:0,
+        isNeedToDeliver: false,
+      }
     }
   },
   watch: {
     isShow(newVal, _) {
       if (!newVal) return;
-
-      this.$nextTick(() => {
-        (this.$refs.name as HTMLInputElement).focus();
-      }); 
     }
   },
   methods: {
@@ -56,13 +50,21 @@ export default defineComponent({
       this.$emit('close');
     },
     resetForm() {
-      this.name = '';
-      this.email = '';
-      this.subscribe = false;
+      this.formModel = {
+        name: '',
+        email: '',
+        subscribe: false,
+
+        day: null,
+        time: null,
+        address: null,
+        typePay: null,
+
+        step:0,
+        isNeedToDeliver: false,
+      };
     },
     async submit() {
-      if (this.name && this.email) {
-        // blocking
         await this.slow();
 
         this.resetForm();
@@ -71,7 +73,6 @@ export default defineComponent({
         this.$store.commit('cart/emptyCart');
         this.$router.push('/');
         this.$snackbar.showMessage({ content: 'Thanks for your purchase. Please check your email for payment.', color: 'success' });
-      }
     },
     async slow() {
       const longTask = await import('../../api/slow.js');
